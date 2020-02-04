@@ -10,6 +10,7 @@ type Element struct {
 type LinkedList struct {
 	Head   *Element
 	length int
+	Last   *Element
 }
 
 //CreateElement creates an Element with (value)
@@ -28,12 +29,42 @@ func CreateList() LinkedList {
 func (ll *LinkedList) Append(newEle *Element) {
 	if ll.length == 0 {
 		ll.Head = newEle
+		ll.Last = newEle
 	} else {
-		currentEle := ll.Head
-		for currentEle.next != nil {
-			currentEle = currentEle.next
-		}
-		currentEle.next = newEle
+		lastPost := ll.Last
+		lastPost.next = newEle
+		ll.Last = newEle
 	}
 	ll.length++
+}
+
+//RemoveFirst removes the first element of our linkedlist.
+func (ll *LinkedList) RemoveFirst() {
+	if ll.length == 0 {
+
+	} else if ll.length == 1 {
+		ll.Head = nil
+		ll.Last = nil
+	} else {
+		ll.Head = ll.Head.next
+		ll.length--
+	}
+}
+
+// RemoveLast removes the last element from a list.
+func (ll *LinkedList) RemoveLast() {
+	if ll.length == 0 {
+
+	} else if ll.length == 1 {
+		ll.Head = nil
+		ll.Last = nil
+	} else {
+		last := ll.Head
+		for last.next != ll.Last {
+			last = last.next
+		}
+		last.next = nil
+		ll.Last = last
+		ll.length--
+	}
 }
