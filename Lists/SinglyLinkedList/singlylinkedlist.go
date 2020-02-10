@@ -1,5 +1,9 @@
 package singlylinkedlist
 
+import (
+	"fmt"
+)
+
 //Element is a item inside a linked list.
 type Element struct {
 	value int
@@ -66,5 +70,19 @@ func (ll *LinkedList) RemoveLast() {
 		last.next = nil
 		ll.Last = last
 		ll.length--
+	}
+}
+
+// Print prints our linked list.
+func (ll *LinkedList) Print() {
+	if ll.length == 0 {
+
+	} else {
+		curr := ll.Head
+		for curr.next != nil {
+			fmt.Println(curr.value)
+			curr = curr.next
+		}
+		fmt.Println(curr.value)
 	}
 }

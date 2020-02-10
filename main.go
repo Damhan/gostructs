@@ -15,6 +15,7 @@ func main() {
 	ll.Append(&ele)
 	ll.Append(&ele2)
 	ll.Append(&ele3)
+	ll.Print()
 	fmt.Printf("List: %v\n", ll)
 	fmt.Printf("Head: %v\n", ll.Head)
 	fmt.Printf("Last: %v\n", ll.Last)
